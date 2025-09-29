@@ -38,15 +38,31 @@ const combinedConfig = {
     '../src/**/*.root.mdx',
     '../src/**/*.root.stories.@(js|jsx|mjs|ts|tsx)',
   ],
-  refs: {
-    react: {
-      title: 'React',
-      url: 'http://localhost:6007',
-    },
-    vue: {
-      title: 'Vue',
-      url: 'http://localhost:6008',
-    },
+  refs: (config, { configType }) => {
+    if (configType === 'DEVELOPMENT') {
+      return {
+
+        react: {
+          title: 'React',
+          url: 'http://localhost:6007',
+        },
+        vue: {
+          title: 'Vue',
+          url: 'http://localhost:6008',
+        },
+      };
+    }
+    return {
+
+      react: {
+        title: 'React',
+        url: 'https://2fds-react.vercel.app/',
+      },
+      vue: {
+        title: 'Vue',
+        url: 'https://2fds-vue.vercel.app/',
+      },
+    };
   },
   framework: instanceConfig.vue.framework,
 } as const satisfies Partial<StorybookConfig>;
