@@ -26,7 +26,7 @@ const possibleEnvSources = [
   () => {
     try {
       // @ts-ignore
-      return import.meta?.env;
+      return import.meta.env;
     } catch {
       return undefined;
     }

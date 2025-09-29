@@ -2,27 +2,23 @@ import './global.css.ts';
 // @ts-expect-error
 import '@fontsource/inter';
 import {
-  type EnvType,
   framework,
-  validFrameworks,
 } from './env';
 import {
   generateFrameworkRoot,
   generateSplitRoot,
 } from './frameworkConfig';
 
-const entrypoints = {
-  react: 'main.react.tsx',
-  vue: 'main.vue.ts',
-} satisfies Record<EnvType['FRAMEWORK'] & string, string>;
-
 if (framework) {
   generateFrameworkRoot(framework);
-  import(/* @vite-ignore */ `./${entrypoints[framework]}`);
+  if (framework === 'vue') {
+    import('./main.vue.ts');
+  } else {
+    import('./main.react.tsx');
+  }
 } else {
   generateSplitRoot();
-  for (const fw of validFrameworks) {
-    import(/* @vite-ignore */ `./${entrypoints[fw]}`);
-  }
+  import('./main.vue.ts');
+  import('./main.react.tsx');
 }
 

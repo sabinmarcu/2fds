@@ -10,7 +10,7 @@
     "storybook": "yarn storybook:vue && yarn storybook:react && yarn storybook:combined",
     "storybook:vue": "FRAMEWORK=vue storybook dev -p 6007",
     "storybook:react": "FRAMEWORK=react storybook dev -p 6008",
-    "storybook:combined": "storybook dev -p 6006"
+    "storybook:composite": "storybook dev -p 6006"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
