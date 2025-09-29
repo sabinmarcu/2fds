@@ -6,11 +6,11 @@ import {
   recipe,
   type RecipeVariants,
 } from '@vanilla-extract/recipes';
-import { theme } from '@/theme.css';
+import { theme } from '../../theme.css';
 import {
   getSelector,
   getSelectors,
-} from '@/utils/selectors';
+} from '../../utils/selectors';
 
 const variables = {
   background: createVar('button-background'),

@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { getSelector, getSelectors } from '@/utils/selectors.ts';
+import { getSelector, getSelectors } from './utils/selectors.ts';
 import Button from './components/Button/Button.vue';
 
 </script>

@@ -38,7 +38,7 @@ const combinedConfig = {
     '../src/**/*.root.mdx',
     '../src/**/*.root.stories.@(js|jsx|mjs|ts|tsx)',
   ],
-  refs: (config, { configType }) => {
+  refs: (_, { configType }) => {
     if (configType === 'DEVELOPMENT') {
       return {
         react: {

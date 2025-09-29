@@ -28,8 +28,6 @@
     }
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.vue",
-    "src/components/Button/Button.vue.stories.tsx"
+    "src/**/*.vue"
   ]
 }

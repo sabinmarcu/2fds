@@ -5,7 +5,7 @@ import {
 } from '@vanilla-extract/css';
 import {
   theme,
-} from '@/theme.css';
+} from './theme.css.ts';
 import { containers } from './frameworkConfig';
 import { validFrameworks } from './env';
 

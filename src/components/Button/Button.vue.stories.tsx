@@ -10,7 +10,7 @@ import { type ButtonStylesProps } from './Button.css';
 import {
   getSelector,
   getSelectors,
-} from '@/utils/selectors';
+} from '../../utils/selectors';
 
 const meta: Meta = {
   title: 'Button',
