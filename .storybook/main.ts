@@ -41,7 +41,6 @@ const combinedConfig = {
   refs: (config, { configType }) => {
     if (configType === 'DEVELOPMENT') {
       return {
-
         react: {
           title: 'React',
           url: 'http://localhost:6007',
@@ -53,7 +52,6 @@ const combinedConfig = {
       };
     }
     return {
-
       react: {
         title: 'React',
         url: 'https://2fds-react.vercel.app/',

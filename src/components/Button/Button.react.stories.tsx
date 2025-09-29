@@ -8,6 +8,10 @@ import { fn } from 'storybook/test';
 
 import Button from './Button.tsx';
 import { type ButtonStylesProps } from './Button.css';
+import {
+  getSelector,
+  getSelectors,
+} from '../../utils/selectors.ts';
 
 const meta: Meta = {
   title: 'Button',
@@ -19,6 +23,19 @@ const meta: Meta = {
       options: ['primary', 'secondary', 'text', 'danger'] satisfies (ButtonStylesProps & {})['variant'][],
     },
   },
+  render: (props) => (
+    <div style={{
+      display: 'flex',
+      flexFlow: 'row nowrap',
+      gap: '1rem',
+    }}>
+      <Button {...props}>Button</Button>
+      <Button {...props} className={getSelector.class('hover')}>Button Hover</Button>
+      <Button {...props} className={getSelector.class('active')}>Button Pressed</Button>
+      <Button {...props} className={getSelectors.class('focus', 'focus-within')}>Button Focused</Button>
+      <Button {...props} disabled>Button Disabled</Button>
+    </div>
+  ),
   args: {
     onClick: fn(),
     children: 'Button',
