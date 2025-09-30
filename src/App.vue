@@ -2,53 +2,53 @@
   <h1>Me Vue</h1>
   <div class="grid">
     <p></p>
-    <p>Primary</p>
-    <p>Secondary</p>
-    <p>Text</p>
-    <p>Danger</p>
+    <p>Unchecked</p>
+    <p>Checked</p>
+    <p>Indeterminate</p>
 
     <p>Default</p>
-    <Button variant="primary">Button</Button>
-    <Button variant="secondary">Button</Button>
-    <Button variant="text">Button</Button>
-    <Button variant="danger">Button</Button>
+    <Checkbox>Checkbox input</Checkbox>
+    <Checkbox checked>Checkbox input</Checkbox>
+    <Checkbox :value="-1">Checkbox input</Checkbox>
 
     <p>Hover</p>
-    <Button variant="primary" :class="{ [getSelector.class('hover')]: true }">Button</Button>
-    <Button variant="secondary" :class="{ [getSelector.class('hover')]: true }">Button</Button>
-    <Button variant="text" :class="{ [getSelector.class('hover')]: true }">Button</Button>
-    <Button variant="danger" :class="{ [getSelector.class('hover')]: true }">Button</Button>
-
-    <p>Pressed</p>
-    <Button variant="primary" :class="{ [getSelector.class('active')]: true }">Button</Button>
-    <Button variant="secondary" :class="{ [getSelector.class('active')]: true }">Button</Button>
-    <Button variant="text" :class="{ [getSelector.class('active')]: true }">Button</Button>
-    <Button variant="danger" :class="{ [getSelector.class('active')]: true }">Button</Button>
+    <Checkbox :class="{ [getSelector.class('hover')]: true }">Checkbox input</Checkbox>
+    <Checkbox :class="{ [getSelector.class('hover')]: true }" checked>Checkbox input</Checkbox>
+    <Checkbox :class="{ [getSelector.class('hover')]: true }" :value="-1">Checkbox input</Checkbox>
 
     <p>Focused</p>
-    <Button variant="primary" :class="{ [getSelectors.class('focus', 'focus-within')]: true }">Button</Button>
-    <Button variant="secondary" :class="{ [getSelectors.class('focus', 'focus-within')]: true }">Button</Button>
-    <Button variant="text" :class="{ [getSelectors.class('focus', 'focus-within')]: true }">Button</Button>
-    <Button variant="danger" :class="{ [getSelectors.class('focus', 'focus-within')]: true }">Button</Button>
+    <Checkbox :class="{ [getSelectors.class('focus', 'focus-within')]: true }">Checkbox input</Checkbox>
+    <Checkbox :class="{ [getSelectors.class('focus', 'focus-within')]: true }" checked>Checkbox input</Checkbox>
+    <Checkbox :class="{ [getSelectors.class('focus', 'focus-within')]: true }" :value="-1">Checkbox input</Checkbox>
+
+    <p>Error</p>
+    <Checkbox aria-invalid>Checkbox input</Checkbox>
+    <Checkbox aria-invalid checked>Checkbox input</Checkbox>
+    <Checkbox aria-invalid :value="-1">Checkbox input</Checkbox>
 
     <p>Disabled</p>
-    <Button variant="primary" disabled>Button</Button>
-    <Button variant="secondary" disabled>Button</Button>
-    <Button variant="text" disabled>Button</Button>
-    <Button variant="danger" disabled>Button</Button>
+    <Checkbox disabled>Checkbox input</Checkbox>
+    <Checkbox disabled checked>Checkbox input</Checkbox>
+    <Checkbox disabled :value="-1">Checkbox input</Checkbox>
+
+    <p>Read-only</p>
+    <Checkbox readOnly>Checkbox input</Checkbox>
+    <Checkbox readOnly checked>Checkbox input</Checkbox>
+    <Checkbox readOnly :value="-1">Checkbox input</Checkbox>
+
   </div>
 </template>
 
 <script setup lang="ts">
-import { getSelector, getSelectors } from './utils/selectors.ts';
-import Button from './components/Button/Button.vue';
+import Checkbox from './components/Checkbox/Checkbox.vue';
+import { getSelector, getSelectors } from './utils/selectors';
 
 </script>
 
 <style scoped>
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   gap: 1rem;
 }

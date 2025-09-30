@@ -37,19 +37,20 @@ __metadata:
     eslint-plugin-react: "npm:^7.37.5"
     eslint-plugin-storybook: "npm:^9.1.8"
     eslint-plugin-vue: "npm:^10.5.0"
+    nanoid: "npm:^5.1.6"
     playwright: "npm:^1.55.1"
     react: "npm:^19.1.1"
     react-dom: "npm:^19.1.1"
     storybook: "npm:^9.1.8"
     typescript: "npm:~5.8.3"
     typescript-eslint: "npm:^8.44.1"
-    vite: "npm:rolldown-vite@7.1.12"
+    vite: "npm:7.1.12"
     vite-tsconfig-paths: "npm:^5.1.4"
     vitest: "npm:^3.2.4"
-    vue: "npm:^3.5.21"
+    vue: "npm:^3.5.22"
     vue-component-meta: "npm:^3.1.0"
     vue-eslint-parser: "npm:^10.2.0"
-    vue-tsc: "npm:^3.0.7"
+    vue-tsc: "npm:^3.1.0"
     zod: "npm:^4.1.11"
   languageName: unknown
   linkType: soft
@@ -2297,27 +2298,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/language-core@npm:3.0.8":
-  version: 3.0.8
-  resolution: "@vue/language-core@npm:3.0.8"
-  dependencies:
-    "@volar/language-core": "npm:2.4.23"
-    "@vue/compiler-dom": "npm:^3.5.0"
-    "@vue/compiler-vue2": "npm:^2.7.16"
-    "@vue/shared": "npm:^3.5.0"
-    alien-signals: "npm:^2.0.5"
-    muggle-string: "npm:^0.4.1"
-    path-browserify: "npm:^1.0.1"
-    picomatch: "npm:^4.0.2"
-  peerDependencies:
-    typescript: "*"
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 10c0/abcf441f22c43422635789cd8970b04c9c35fb95f965dbebe81a0ed1227af1f405b88b9e037bd8fe555eb0f21293d73ac8da6b624f779bff14db2163f96d6991
-  languageName: node
-  linkType: hard
-
 "@vue/language-core@npm:3.1.0":
   version: 3.1.0
   resolution: "@vue/language-core@npm:3.1.0"
@@ -2460,13 +2440,6 @@ __metadata:
   version: 1.0.13
   resolution: "alien-signals@npm:1.0.13"
   checksum: 10c0/7b0ec8305eaacf810ab3fa7e2045c343e695dca510befc148ccef26cb59b8f159d9d56772fbd8767f85cbccc6fadcc09b9f90a4e1e1206d5f726b8995f24dbe4
-  languageName: node
-  linkType: hard
-
-"alien-signals@npm:^2.0.5":
-  version: 2.0.7
-  resolution: "alien-signals@npm:2.0.7"
-  checksum: 10c0/91b299929cb5a59578e5a028615644a65453f87b54e2134b62a2b4d2c2c473f498a657e22a38d277814a630d312629e033980638c5841ff8c7194d8261b0c0ff
   languageName: node
   linkType: hard
 
@@ -5667,6 +5640,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanoid@npm:^5.1.6":
+  version: 5.1.6
+  resolution: "nanoid@npm:5.1.6"
+  bin:
+    nanoid: bin/nanoid.js
+  checksum: 10c0/27b5b055ad8332cf4f0f9f6e2a494aa7e5ded89df4cab8c8490d4eabefe72c4423971d2745d22002868b1d50576a5e42b7b05214733b19f576382323282dd26e
+  languageName: node
+  linkType: hard
+
 "napi-postinstall@npm:^0.3.0":
   version: 0.3.3
   resolution: "napi-postinstall@npm:0.3.3"
@@ -7910,21 +7892,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-tsc@npm:^3.0.7":
-  version: 3.0.8
-  resolution: "vue-tsc@npm:3.0.8"
+"vue-tsc@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "vue-tsc@npm:3.1.0"
   dependencies:
     "@volar/typescript": "npm:2.4.23"
-    "@vue/language-core": "npm:3.0.8"
+    "@vue/language-core": "npm:3.1.0"
   peerDependencies:
     typescript: ">=5.0.0"
   bin:
     vue-tsc: ./bin/vue-tsc.js
-  checksum: 10c0/2593722116a0ac7ace8540b3c911413dc60e5e7b33cba3938f2cd3ca6efb46b916eecda3b55b5f43fa5713030e12005c18d05cef28626284cda51a5fe67de091
+  checksum: 10c0/32a676f5c349948b1fc5bf9de4af7ebfe94efa8baba6f402f42abca9bc461d26e3b798854cf851121ac03e5a2beeace93d42d590f2fddd9aeaacd9e9c62b70c9
   languageName: node
   linkType: hard
 
-"vue@npm:^3.5.21":
+"vue@npm:^3.5.22":
   version: 3.5.22
   resolution: "vue@npm:3.5.22"
   dependencies:

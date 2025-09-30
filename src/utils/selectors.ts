@@ -1,4 +1,4 @@
-export type Selectors = 'hover' | 'active' | 'focus' | 'focus-within' | 'disabled';
+export type Selectors = 'hover' | 'active' | 'focus' | 'focus-within' | 'disabled' | 'checked' | 'unchecked' | 'indeterminate' | 'valid' | 'invalid' | 'read-only';
 
 const getCSSSelector = <Selector extends Selectors>(selector: Selector) => (
   `:${selector}` as `:${Selector}`
@@ -36,3 +36,58 @@ getSelectors.css = <SelectorsInput extends Selectors[]>(
       (selector) => getSelector.css(selector),
     ).join(', ')
   );
+
+export const parentSelector = (
+  selector: string,
+  target = 'input',
+) => `&:has(${target}${selector.replace(/^&*/, '')})`;
+
+export const parentSelectors = (
+  ...selectors: string[]
+) => selectors.map((selector) => parentSelector(selector)).join(', ');
+
+const hoverSelectors = getSelector('hover');
+const hoverSelectorsArray = hoverSelectors.split(', ');
+const activeSelectors = getSelector('active');
+const activeSelectorsArray = activeSelectors.split(', ');
+const disabledSelectors = getSelector('disabled');
+const disabledSelectorsArray = disabledSelectors.split(', ');
+
+export const invalidSelectors = parentSelectors(':invalid', '[aria-invalid]');
+const invalidSelectorsArray = invalidSelectors.split(', ');
+
+export const readonlySelectors = parentSelectors('[readonly]');
+const readonlySelectorsArray = readonlySelectors.split(', ');
+
+export const fixSelector = (
+  selectorArray: string[],
+  disableSelectorArray: string[],
+) => (
+  selectorArray.flatMap(
+    (selector) => [
+      selector,
+      disableSelectorArray.map(
+        (disableSelector) => `:not(${disableSelector})`,
+      ),
+    ].flat().join(''),
+  )
+).join(', ');
+
+export const fixedHoverSelector = fixSelector(
+  hoverSelectorsArray,
+  [
+    disabledSelectorsArray,
+    readonlySelectorsArray,
+    invalidSelectorsArray,
+  ].flat(),
+);
+export const fixedActiveSelector = fixSelector(activeSelectorsArray, [
+  disabledSelectorsArray,
+  readonlySelectorsArray,
+  invalidSelectorsArray,
+].flat());
+
+export const fixedInvalidSelector = fixSelector(
+  invalidSelectorsArray,
+  hoverSelectorsArray,
+);

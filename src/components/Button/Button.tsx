@@ -15,7 +15,7 @@ export namespace Button {
   >;
 }
 
-function Button({
+export function Button({
   children,
   className,
   variant,
@@ -30,5 +30,3 @@ function Button({
     </button>
   );
 }
-
-export default Button;

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default */
 import type {
   Meta,
   StoryObj,
@@ -6,7 +5,7 @@ import type {
 
 import { fn } from 'storybook/test';
 
-import Button from './Button.tsx';
+import { Button } from './Button.tsx';
 import { type ButtonStylesProps } from './Button.css';
 import {
   getSelector,
@@ -26,7 +25,7 @@ const meta: Meta = {
   render: (props) => (
     <div style={{
       display: 'flex',
-      flexFlow: 'row nowrap',
+      flexFlow: 'row wrap',
       gap: '1rem',
     }}>
       <Button {...props}>Button</Button>

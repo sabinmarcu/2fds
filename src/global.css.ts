@@ -66,6 +66,10 @@ globalStyle(`#${containers.split}`, {
 for (const framework of validFrameworks) {
   globalStyle(`#${containers[framework]}`, {
     ...stretchStyles,
+
+    overflowInline: 'hidden',
+    overflowBlock: 'auto',
+
     inlineSize: `calc(100cqw - ${spacingVariable} *2)`,
     blockSize: `calc(100cqh - ${spacingVariable} * 2)`,
 

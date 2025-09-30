@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-named-as-default
-import Button from './components/Button/Button.tsx';
+import { Checkbox } from './components/Checkbox/Checkbox.tsx';
 import {
   getSelector,
   getSelectors,
@@ -11,45 +10,44 @@ function App() {
       <h1>Me React</h1>
       <div style={{
         display: 'grid',
-        gridTemplateRows: 'repeat(5, 1fr)',
-        gridTemplateColumns: 'repeat(5, 1fr)',
+        gridTemplateRows: 'repeat(7, 1fr)',
+        gridTemplateColumns: 'repeat(4, 1fr)',
         gap: '1rem',
       }}>
         <p></p>
-        <p>Primary</p>
-        <p>Secondary</p>
-        <p>Text</p>
-        <p>Danger</p>
+        <p>Unchecked</p>
+        <p>Checked</p>
+        <p>Indeterminate</p>
 
         <p>Default</p>
-        <Button variant="primary">Button</Button>
-        <Button variant="secondary">Button</Button>
-        <Button variant="text">Button</Button>
-        <Button variant="danger">Button</Button>
+        <Checkbox>Checkbox input</Checkbox>
+        <Checkbox checked>Checkbox input</Checkbox>
+        <Checkbox value={-1}>Checkbox input</Checkbox>
 
         <p>Hover</p>
-        <Button variant="primary" className={getSelector.class('hover')}>Button</Button>
-        <Button variant="secondary" className={getSelector.class('hover')}>Button</Button>
-        <Button variant="text" className={getSelector.class('hover')}>Button</Button>
-        <Button variant="danger" className={getSelector.class('hover')}>Button</Button>
-
-        <p>Pressed</p>
-        <Button variant="primary" className={getSelector.class('active')}>Button</Button>
-        <Button variant="secondary" className={getSelector.class('active')}>Button</Button>
-        <Button variant="text" className={getSelector.class('active')}>Button</Button>
-        <Button variant="danger" className={getSelector.class('active')}>Button</Button>
+        <Checkbox className={getSelector.class('hover')}>Checkbox input</Checkbox>
+        <Checkbox className={getSelector.class('hover')} checked>Checkbox input</Checkbox>
+        <Checkbox className={getSelector.class('hover')} value={-1}>Checkbox input</Checkbox>
 
         <p>Focused</p>
-        <Button variant="primary" className={getSelectors.class('focus', 'focus-within')}>Button</Button>
-        <Button variant="secondary" className={getSelectors.class('focus', 'focus-within')}>Button</Button>
-        <Button variant="text" className={getSelectors.class('focus', 'focus-within')}>Button</Button>
-        <Button variant="danger" className={getSelectors.class('focus', 'focus-within')}>Button</Button>
+        <Checkbox className={getSelectors.class('focus', 'focus-within')}>Checkbox input</Checkbox>
+        <Checkbox className={getSelectors.class('focus', 'focus-within')} checked>Checkbox input</Checkbox>
+        <Checkbox className={getSelectors.class('focus', 'focus-within')} value={-1}>Checkbox input</Checkbox>
+
+        <p>Error</p>
+        <Checkbox aria-invalid>Checkbox input</Checkbox>
+        <Checkbox aria-invalid checked>Checkbox input</Checkbox>
+        <Checkbox aria-invalid value={-1}>Checkbox input</Checkbox>
 
         <p>Disabled</p>
-        <Button variant="primary" disabled>Button</Button>
-        <Button variant="secondary" disabled>Button</Button>
-        <Button variant="text" disabled>Button</Button>
-        <Button variant="danger" disabled>Button</Button>
+        <Checkbox disabled>Checkbox input</Checkbox>
+        <Checkbox disabled checked>Checkbox input</Checkbox>
+        <Checkbox disabled value={-1}>Checkbox input</Checkbox>
+
+        <p>Read-only</p>
+        <Checkbox readOnly>Checkbox input</Checkbox>
+        <Checkbox readOnly checked>Checkbox input</Checkbox>
+        <Checkbox readOnly value={-1}>Checkbox input</Checkbox>
       </div>
     </>
   );

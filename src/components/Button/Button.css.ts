@@ -8,6 +8,8 @@ import {
 } from '@vanilla-extract/recipes';
 import { theme } from '../../theme.css';
 import {
+  fixedActiveSelector,
+  fixedHoverSelector,
   getSelector,
   getSelectors,
 } from '../../utils/selectors';
@@ -23,32 +25,6 @@ const variables = {
   outlineAnimating: createVar('button-outline-animating'),
 };
 
-const hoverSelectors = getSelector('hover');
-const hoverSelectorsArray = hoverSelectors.split(', ');
-const activeSelectors = getSelector('active');
-const activeSelectorsArray = activeSelectors.split(', ');
-const disabledSelectors = getSelector('disabled');
-const disabledSelectorsArray = disabledSelectors.split(', ');
-
-const fixSelector = (
-  selectorArray: string[],
-  disableSelectorArray: string[],
-) => (
-  selectorArray.flatMap(
-    (selector) => [
-      selector,
-      disableSelectorArray.map(
-        (disableSelector) => `:not(${disableSelector})`,
-      ),
-    ].flat().join(''),
-  )
-).join(', ');
-
-const fixedHoverSelector = fixSelector(hoverSelectorsArray, disabledSelectorsArray);
-const fixedActiveSelector = fixSelector(activeSelectorsArray, [
-  disabledSelectorsArray,
-].flat());
-
 const outlinePositions = {
   start: `calc(${variables.borderSize} * -1)`,
   end: `calc(${variables.borderSize} * -2 - 1px)`,
@@ -62,7 +38,7 @@ const breatheAnimation = keyframes({
   },
 });
 
-const mapBrandPaletteToVariant = (input: typeof theme.brand.primary) => {
+const mapBrandPaletteToVariant = (input: typeof theme.brand.button.primary) => {
   const defaultBorder = input.default.border ?? 'transparent';
   return {
     vars: {
@@ -123,6 +99,7 @@ export const buttonStyles = recipe({
     borderBlockStart: `solid ${variables.borderSize} ${variables.border}`,
     borderBlockEnd: `solid ${variables.borderSize} ${variables.border}`,
     fontSize: theme.brand.font.size.p4,
+    fontFamily: 'Inter',
     lineHeight: `${theme.brand.font.lineHeight.p4}px`,
     fontWeight: 500,
     cursor: 'pointer',
@@ -172,10 +149,10 @@ export const buttonStyles = recipe({
   },
   variants: {
     variant: {
-      primary: mapBrandPaletteToVariant(theme.brand.primary),
-      secondary: mapBrandPaletteToVariant(theme.brand.secondary),
-      text: mapBrandPaletteToVariant(theme.brand.text),
-      danger: mapBrandPaletteToVariant(theme.brand.danger),
+      primary: mapBrandPaletteToVariant(theme.brand.button.primary),
+      secondary: mapBrandPaletteToVariant(theme.brand.button.secondary),
+      text: mapBrandPaletteToVariant(theme.brand.button.text),
+      danger: mapBrandPaletteToVariant(theme.brand.button.danger),
     },
   },
   defaultVariants: {
