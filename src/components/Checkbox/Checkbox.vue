@@ -41,7 +41,7 @@ const {
   value?: typeof States[keyof typeof States]
 }>();
 const dispatch = defineEmits<{
-  onChange: [typeof States[keyof typeof States]]
+  change: [typeof States[keyof typeof States]]
 }>()
 const {
   checked,
@@ -72,7 +72,7 @@ const localOnChange = (event: Event) => {
   );
 
   state.value = nextState;
-  dispatch('onChange', nextState);
+  dispatch('change', nextState);
 }
 
 watchEffect(
