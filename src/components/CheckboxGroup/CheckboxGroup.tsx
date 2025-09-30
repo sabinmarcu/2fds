@@ -6,7 +6,6 @@ import {
   useCallback,
 } from 'react';
 import { Checkbox } from '../Checkbox/Checkbox';
-import { States } from '../Checkbox/Checkbox.constants.ts';
 import {
   checkboxGroupListStyle,
   checkboxGroupStyle,

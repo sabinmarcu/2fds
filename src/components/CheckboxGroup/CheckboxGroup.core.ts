@@ -28,7 +28,7 @@ export const detectState = (
     return undefined;
   }
   const inputs = [
-    ...rootReference.querySelectorAll('input[type=checkbox]'),
+    ...rootReference.querySelectorAll('input[type=checkbox]') as any,
   ];
 
   const ids = inputs.map(
@@ -81,10 +81,10 @@ export const toggleState = (
   const rootInput = rootReference.parentNode!.querySelector('input[type=checkbox]:first-of-type') as HTMLInputElement;
   const nextState = state === States.CHECKED ? States.UNCHECKED : States.CHECKED;
   const inputs = [
-    ...rootReference.querySelectorAll('input[type=checkbox]'),
+    ...rootReference.querySelectorAll('input[type=checkbox]') as any,
   ];
   const targets = [
-    ...rootReference.querySelectorAll('input[type=checkbox] ~ label:first-of-type'),
+    ...rootReference.querySelectorAll('input[type=checkbox] ~ label:first-of-type') as any,
   ];
   for (const [index, input] of Object.entries(inputs)) {
     const target = targets[Number.parseInt(index, 10)];

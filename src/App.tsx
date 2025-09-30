@@ -1,9 +1,5 @@
 import { Checkbox } from './components/Checkbox/Checkbox.tsx';
 import { CheckboxGroup } from './components/CheckboxGroup/CheckboxGroup.tsx';
-import {
-  getSelector,
-  getSelectors,
-} from './utils/selectors.ts';
 
 function App() {
   return (

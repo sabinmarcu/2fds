@@ -3,8 +3,6 @@ import type {
   StoryObj,
 } from '@storybook/react-vite';
 
-import { fn } from 'storybook/test';
-
 import { Checkbox } from './Checkbox.tsx';
 import { States } from './Checkbox.constants.ts';
 import {

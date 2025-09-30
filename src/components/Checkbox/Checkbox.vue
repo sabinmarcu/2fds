@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { nanoid } from 'nanoid';
-import { computed, ref, useAttrs, useTemplateRef, watchEffect, type InputHTMLAttributes } from 'vue';
+import { computed, ref, useAttrs, useTemplateRef, watchEffect } from 'vue';
 
 import {
   States,
