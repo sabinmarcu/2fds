@@ -50,10 +50,19 @@ const {
 
 const id = ref(nanoid());
 const inputReference = useTemplateRef<HTMLInputElement>('input');
-const state = ref<typeof States[keyof typeof States]>(value !== undefined
-  ? value
-  : (checked !== undefined ? States.CHECKED : States.UNCHECKED)
+const deriveStateFromProps = (
+  innerValue: typeof value,
+  innerChecked: typeof checked,
+) => (
+  innerValue !== undefined
+    ? innerValue
+    : (innerChecked !== undefined ? States.CHECKED : States.UNCHECKED)
 )
+const state = ref<typeof States[keyof typeof States]>(deriveStateFromProps(value, checked))
+
+watchEffect(
+  () => state.value = deriveStateFromProps(value, checked)
+);
 
 const stateVariant = computed(
   () => styleVariantMapping[state.value]

@@ -158,6 +158,12 @@ export const checkboxStyles = recipe({
     flexFlow: 'row nowrap',
     justifyContent: 'center',
     alignItems: 'flex-start',
+    color: theme.brand.checkbox.text,
+    selectors: {
+      [parentSelectors(':disabled')]: {
+        color: theme.brand.checkbox['text-disabled'],
+      },
+    },
     vars: {
       [variables.outline]: 'transparent',
       [variables.outlineSize]: '2px',

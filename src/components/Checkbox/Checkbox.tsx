@@ -1,12 +1,13 @@
+/* eslint-disable import/export */
+/* eslint-disable @typescript-eslint/no-redeclare */
 import { nanoid } from 'nanoid';
 import {
+  forwardRef,
   useEffect,
   useMemo,
-  useRef,
   useState,
   type InputHTMLAttributes,
   type PropsWithChildren,
-  type ChangeEvent,
 } from 'react';
 import {
   States,
@@ -18,6 +19,7 @@ import {
   checkboxInputStyle,
   checkboxTextStyle,
 } from './Checkbox.css';
+import { useReplicateRef as useReplicateReference } from '../../hooks/useReplicateRef';
 
 export namespace Checkbox {
   export type Props = PropsWithChildren<(
@@ -28,7 +30,15 @@ export namespace Checkbox {
     }
   )>;
 }
-export function Checkbox({
+
+const deriveStateFromProps = (
+  { value, checked }: Pick<Checkbox.Props, 'value' | 'checked'>,
+) => (
+  value !== undefined
+    ? value
+    : (checked ? States.CHECKED : States.UNCHECKED)
+);
+export const Checkbox = forwardRef<HTMLInputElement, Checkbox.Props>(({
   children,
   value,
   checked,
@@ -36,19 +46,28 @@ export function Checkbox({
   className,
   readOnly,
   ...props
-}: Checkbox.Props) {
+}, reference) => {
   const id = useMemo(
     () => nanoid(),
     [],
   );
 
   const [state, setState] = useState<typeof States[keyof typeof States]>(
-    value !== undefined
-      ? value
-      : (checked ? States.CHECKED : States.UNCHECKED),
+    deriveStateFromProps({
+      value,
+      checked,
+    }),
   );
 
-  const inputReference = useRef<HTMLInputElement>(null);
+  useEffect(
+    () => setState(deriveStateFromProps({
+      value,
+      checked,
+    })),
+    [value, checked],
+  );
+
+  const inputReference = useReplicateReference(reference);
   useEffect(
     () => {
       if (!inputReference.current) {
@@ -60,13 +79,13 @@ export function Checkbox({
     [state],
   );
 
-  const localOnChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    if (target.readOnly) {
+  const localOnChange = () => {
+    if (!inputReference.current || inputReference.current.readOnly) {
       return;
     }
     const nextState = (
-      (target.indeterminate && States.INDETERMINATE)
-      || (target.checked && States.CHECKED)
+      (inputReference.current.indeterminate && States.INDETERMINATE)
+      || (inputReference.current.checked && States.CHECKED)
       || States.UNCHECKED
     );
     setState(nextState);
@@ -103,11 +122,13 @@ export function Checkbox({
           ? <svg width="12" height="2" viewBox="0 0 12 2" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fillRule="evenodd" clipRule="evenodd" d="M11.1499 0.999994C11.1499 1.35898 10.8589 1.64999 10.4999 1.64999L1.4999 1.64999C1.14092 1.64999 0.849903 1.35898 0.849903 0.999993C0.849903 0.641008 1.14092 0.349993 1.4999 0.349993L10.4999 0.349994C10.8589 0.349994 11.1499 0.641009 11.1499 0.999994Z" fill="white"/>
           </svg>
+
           : null}
       </label>
       <label htmlFor={id} className={checkboxTextStyle}>
         {children}
       </label>
     </div>
+
   );
-}
+});
