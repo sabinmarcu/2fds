@@ -78,6 +78,7 @@ export const toggleState = (
   if (!rootReference) {
     return;
   }
+  const rootInput = rootReference.parentNode!.querySelector('input[type=checkbox]:first-of-type') as HTMLInputElement;
   const nextState = state === States.CHECKED ? States.UNCHECKED : States.CHECKED;
   const inputs = [
     ...rootReference.querySelectorAll('input[type=checkbox]'),
@@ -95,4 +96,5 @@ export const toggleState = (
       target.dispatchEvent(new MouseEvent('click'));
     }
   }
+  rootInput.focus();
 };
