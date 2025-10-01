@@ -108,3 +108,7 @@ I would like to look into it and see what I've done wrong, or what I've missed
   - currently I reused the Button component, and hid the outline focus indicator for the input while the buttons are focused
   - I have a feeling this can be done better in the future
 
+## Closing notes
+- I would probably spend more time fine-tuning `tsconfig.json` files
+  - language servers would get confused rather quickly in both VSCode and NVim with trying to reconcile vue and react formats
+  - eslint was also not running properly in vue files (probably configuration issue, assuming typescript-eslint was not taking the script section of the file into account when parsing)
