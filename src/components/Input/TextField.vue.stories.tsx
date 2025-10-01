@@ -12,7 +12,7 @@ import { ref } from 'vue';
 
 const meta: Meta = {
   title: 'Inputs/TextField',
-  component: TextField,
+  component: TextField as any,
   tags: ['autodocs', '!dev'],
   render: (attrs) => ({
     components: { TextField },
