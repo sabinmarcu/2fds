@@ -43,6 +43,9 @@ import {
   validate,
   type Validator,
 } from './TextField.validation';
+import {
+  requiredValidator
+} from './TextField.constants.ts'
 import { computed, ref, useAttrs } from 'vue';
 
 const id = ref(nanoid());
@@ -72,7 +75,7 @@ const withRequiredValidators = computed(
   () => (required
     ? [
       ...validators,
-      (input: string) => `${input}`.length > 0 ? undefined : 'Required'
+      requiredValidator, 
     ]
     : validators
   )

@@ -17,6 +17,7 @@ import {
   validate,
   type Validator,
 } from './TextField.validation';
+import { requiredValidator } from './TextField.constants';
 
 export namespace TextField {
   export type Props<T extends string | number | boolean> = (
@@ -42,11 +43,18 @@ export function TextField<T extends string | number | boolean>({
   ...props
 }: TextField.Props<T>) {
   const id = useMemo(() => nanoid(), []);
+  const withRequiredValidators = useMemo(
+    () => (required
+      ? [...validators, requiredValidator]
+      : validators
+    ),
+    [validators]
+  )
   const validateInput = useMemo(
-    () => (validators.length > 0
-      ? (input: T) => validate(validators, input)
+    () => (withRequiredValidators.length > 0
+      ? (input: T) => validate(withRequiredValidators as any, input)
       : () => []),
-    [validators],
+    [withRequiredValidators],
   );
   const errors = useMemo(
     () => validateInput(value as any),
@@ -56,6 +64,7 @@ export function TextField<T extends string | number | boolean>({
     () => `${id}-errors`,
     [id],
   );
+
   return (
     <div className={[
       textFieldStyle,
@@ -72,13 +81,13 @@ export function TextField<T extends string | number | boolean>({
           {...required
             ? {
               required: true,
-              ariaRequired: 'true',
+              'aria-required': true,
             }
             : {}
           }
           {...errors.length > 0
             ? {
-              'aria-invalid': 'true',
+              'aria-invalid': true,
               'aria-errormessage': errorsId,
             }
             : {}
