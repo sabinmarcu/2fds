@@ -5,6 +5,7 @@ import { theme as baseTheme } from '@sabinmarcu/theme';
 import type { CSSProperties } from '@vanilla-extract/css';
 import { brandButton } from './theme.button.css';
 import { brandCheckbox } from './theme.checkbox.css';
+import { brandTextfield } from './theme.input.css';
 
 setupTheme({
   primary: '#0cf',
@@ -25,6 +26,7 @@ const finalTheme = {
   brand: {
     button: brandButton,
     checkbox: brandCheckbox,
+    input: brandTextfield,
     spacing: {
       xs: 8,
       l: 24,
@@ -36,9 +38,11 @@ const finalTheme = {
     font: {
       size: {
         p4: 14,
+        p5: 12,
       },
       lineHeight: {
         p4: 20,
+        p5: 16,
       },
     },
   },

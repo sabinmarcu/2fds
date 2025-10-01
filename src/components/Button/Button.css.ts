@@ -14,7 +14,7 @@ import {
   getSelectors,
 } from '../../utils/selectors';
 
-const variables = {
+export const variables = {
   background: createVar('button-background'),
   text: createVar('button-text'),
   border: createVar('button-border'),

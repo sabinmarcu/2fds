@@ -1,0 +1,18 @@
+export const brandTextfield = {
+  default: '#818892',
+  hover: '#363B44',
+  focused: '#794CDE',
+  outline: '#9465FF',
+  error: '#D83535',
+  'error-outline': '#FA4949',
+  disabled: '#C4C7CA',
+  'disabled-background': '#F6F6F6',
+  readonly: 'transparent',
+  'readonly-background': '#F6F6F6',
+  text: '#25292C',
+  'disabled-text': '#6C7176',
+  label: '#2B253A',
+  'disabled-label': '#6C7176',
+  'error-message': '#B62424',
+  'error-message-icon': '#D83535',
+};
