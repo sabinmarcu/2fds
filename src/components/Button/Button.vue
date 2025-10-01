@@ -10,5 +10,5 @@ interface Props {
   // Ugly hack for Vue T_T (generics unsupported in props determination)
   variant?: (ButtonStylesProps & {})["variant"]
 }
-const { variant } = withDefaults(defineProps<Props>(), { variant: 'primary' });
+const { variant = 'primary' } = defineProps<Props>();
 </script>

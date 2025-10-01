@@ -23,7 +23,7 @@ import Button from '../Button/Button.vue'
 import { emailValidators, ageValidators } from './Form.constants.ts'
 import { formStyle } from './Form.css';
 import { ref, computed } from 'vue';
-import { parseReport } from './FormReport.constants.ts';
+import { parseReport, type ReportType } from './FormReport.constants.ts';
 
 const name = ref<string>('')
 const email = ref<string>('')

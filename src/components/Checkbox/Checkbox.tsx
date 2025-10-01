@@ -1,8 +1,5 @@
-/* eslint-disable import/export */
-/* eslint-disable @typescript-eslint/no-redeclare */
 import { nanoid } from 'nanoid';
 import {
-  forwardRef,
   useEffect,
   useMemo,
   useRef,
@@ -22,7 +19,7 @@ import {
 } from './Checkbox.css';
 
 export namespace Checkbox {
-  export type States = typeof States[keyof typeof States]
+  export type States = typeof States[keyof typeof States];
   export type Props = PropsWithChildren<(
     & InputHTMLAttributes<HTMLInputElement>
     & {
@@ -133,4 +130,5 @@ export function Checkbox({
     </div>
 
   );
-};
+}
+
