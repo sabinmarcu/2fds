@@ -208,6 +208,10 @@ export const checkboxBoxStyle = style({
   borderBlockStart: `solid ${variables.borderSize} ${variables.border}`,
   borderBlockEnd: `solid ${variables.borderSize} ${variables.border}`,
 
+
+  // Animation / Transition
+  transition: theme.transition('background', 'borderColor'),
+
   position: 'relative',
   selectors: {
     '&::before': {
