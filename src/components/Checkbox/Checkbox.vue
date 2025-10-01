@@ -35,13 +35,15 @@ import {
 } from './Checkbox.constants';
 import { checkboxBoxStyle, checkboxInputStyle, checkboxStyles, checkboxTextStyle } from './Checkbox.css';
 
+export type States = typeof States[keyof typeof States];
+
 const {
   value,
 } = defineProps<{
-  value?: typeof States[keyof typeof States]
+  value?: States
 }>();
 const dispatch = defineEmits<{
-  change: [typeof States[keyof typeof States]]
+  change: [States]
 }>()
 const {
   checked,
@@ -58,14 +60,14 @@ const deriveStateFromProps = (
     ? innerValue
     : (innerChecked !== undefined ? States.CHECKED : States.UNCHECKED)
 )
-const state = ref<typeof States[keyof typeof States]>(deriveStateFromProps(value, checked))
+const state = defineModel<States>({ default: 0 })
 
 watchEffect(
   () => state.value = deriveStateFromProps(value, checked)
 );
 
 const stateVariant = computed(
-  () => styleVariantMapping[state.value]
+  () => styleVariantMapping[state.value ?? 0]
 );
 
 const localOnChange = (event: Event) => {

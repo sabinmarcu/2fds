@@ -5,6 +5,7 @@ import {
   forwardRef,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type InputHTMLAttributes,
   type PropsWithChildren,
@@ -19,9 +20,9 @@ import {
   checkboxInputStyle,
   checkboxTextStyle,
 } from './Checkbox.css';
-import { useReplicateRef as useReplicateReference } from '../../hooks/useReplicateRef';
 
 export namespace Checkbox {
+  export type States = typeof States[keyof typeof States]
   export type Props = PropsWithChildren<(
     & InputHTMLAttributes<HTMLInputElement>
     & {
@@ -38,7 +39,7 @@ const deriveStateFromProps = (
     ? value
     : (checked ? States.CHECKED : States.UNCHECKED)
 );
-export const Checkbox = forwardRef<HTMLInputElement, Checkbox.Props>(({
+export function Checkbox({
   children,
   value,
   checked,
@@ -46,7 +47,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Checkbox.Props>(({
   className,
   readOnly,
   ...props
-}, reference) => {
+}: Checkbox.Props) {
   const id = useMemo(
     () => nanoid(),
     [],
@@ -67,7 +68,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Checkbox.Props>(({
     [value, checked],
   );
 
-  const inputReference = useReplicateReference(reference);
+  const inputReference = useRef<HTMLInputElement>(null);
   useEffect(
     () => {
       if (!inputReference.current) {
@@ -110,6 +111,7 @@ export const Checkbox = forwardRef<HTMLInputElement, Checkbox.Props>(({
         onChange={localOnChange}
         className={checkboxInputStyle}
         readOnly={readOnly}
+        value={value}
       />
       <label htmlFor={id} className={checkboxBoxStyle}>
         {state === States.CHECKED
@@ -131,4 +133,4 @@ export const Checkbox = forwardRef<HTMLInputElement, Checkbox.Props>(({
     </div>
 
   );
-});
+};
