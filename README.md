@@ -1,9 +1,10 @@
 # 2 Frameworks Design System
 
----
 Links:
 - [Storybook](https://2fds-storybook.vercel.app/)
 - [Application](https://2fds.vercel.app/)
+
+---
 
 In short, this projects is a proof of concept: a small collection of components built in parallel for both React and Vue.
 Styling was done with [vanilla-extract](https://vanilla-extract.style/). Approaches will be detailed lower in this document.
@@ -51,8 +52,6 @@ I wanted the checkbox group to be able to control N checkboxes as children, for 
   <checkbox third bind={ref3}>
   [...]
   <checkbox Nth bind={refN}>
-```
-```
 ```
 
 At the same time, I wanted to have common logic between frameworks in this case (as a proof of concept), and, as such, had to break from components and rely on pure JS manipulation.
