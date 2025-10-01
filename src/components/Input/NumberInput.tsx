@@ -12,9 +12,10 @@ import {
 import { numberValidator } from './NumberInput.constants';
 
 export namespace NumberInput {
+  export type ValueType = number | ''
   export type Props = (
-    & Omit<TextField.Props<number>, `slot${string}` | 'onChange'>
-    & { onChange?: (input: number) => void }
+    & Omit<TextField.Props<ValueType>, `slot${string}` | 'onChange'>
+    & { onChange?: (input: ValueType) => void }
   );
 }
 export function NumberInput({
@@ -25,7 +26,7 @@ export function NumberInput({
   ...props
 }: NumberInput.Props) {
   const localOnChange = ({ target: { value: next } }: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(next as any);
+    onChange?.(next as NumberInput.ValueType);
   };
   const mutate = useCallback(
     (by: number) => {

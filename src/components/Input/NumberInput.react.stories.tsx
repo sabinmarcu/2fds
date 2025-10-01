@@ -15,7 +15,7 @@ const meta: Meta = {
   component: NumberInput,
   tags: ['autodocs', '!dev'],
   render: (props) => {
-    const [state, setState] = useState<number>(0);
+    const [state, setState] = useState<NumberInput.ValueType>(0);
     return (
       <div style={{
         display: 'flex',

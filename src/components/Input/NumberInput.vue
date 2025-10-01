@@ -45,15 +45,16 @@ import TextField from './TextField.vue';
 import { numberValidator } from './NumberInput.constants';
 import type { Validator } from './TextField.validation';
 
+type ValueType = number | '';
 const props = defineProps<{
-  validators?: Validator<number>[]
+  validators?: Validator<ValueType>[]
 }>();
 
 const dispatch = defineEmits<{
-  input: [number]
+  input: [ValueType]
 }>()
 
-const model = defineModel<number>({ default: 0 });
+const model = defineModel<ValueType>({ default: 0 });
 
 const attrs = useAttrs();
 const mergedAttrs = computed(
@@ -65,8 +66,8 @@ const mergedAttrs = computed(
 
 const onChange = (event: Event) => {
   const target = event.target as HTMLInputElement;
-  model.value = target.value as any;
-  dispatch('input', target.value as any);
+  model.value = target.value as ValueType;
+  dispatch('input', target.value as ValueType);
 }
 
 const mutate = (by: number) => {
