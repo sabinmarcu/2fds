@@ -175,6 +175,7 @@ export const textFieldContainerStyle = style({
 
 export const textFieldInputStyle = style({
   flex: 1,
+  blockSize: '100%',
 
   marginBlockStart: '10px',
   marginBlockEnd: '10px',
